@@ -45,7 +45,9 @@ const MovieContainer = (props) => {
     const { Title, Year, imdID, Type, Poster } = props.movie;
     return (
 
-        <MovieDiv>
+        <MovieDiv onClick={()=>{
+            props.onMovieSelect(imdID)
+        }}>
             <CoverImage src={Poster}></CoverImage>
             <MovieName>{Title}</MovieName>
             <InfoMovie>
