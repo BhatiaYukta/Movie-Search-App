@@ -110,8 +110,8 @@ const SearchTile = () => {
             </Header>
             <MovieListContainer>
                 {movieList?.length
-                    ? movieList.map(() => <MovieContainer />
-                    ) : <span style={{color:"white"}}>"No movie Search"</span>}
+                    ? movieList.map((movie, index) => <MovieContainer key={index} movie={movie} />
+                    ) : <span style={{ color: "white" }}>"No movie Search"</span>}
 
             </MovieListContainer>
         </Container>

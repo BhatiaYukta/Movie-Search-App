@@ -42,14 +42,15 @@ text-transform: capitalize;
 text-overflow: ellipsis;
 `
 const MovieContainer = (props) => {
+    const { Title, Year, imdID, Type, Poster } = props.movie;
     return (
 
         <MovieDiv>
-            <CoverImage src="https://m.media-amazon.com/images/M/MV5BNjM0NTc0NzItM2FlYS00YzEwLWE0YmUtNTA2ZWIzODc2OTgxXkEyXkFqcGdeQXVyNTgwNzIyNzg@._V1_SX300.jpg"></CoverImage>
-            <MovieName>Guardians of the Galaxy Vol. 2</MovieName>
+            <CoverImage src={Poster}></CoverImage>
+            <MovieName>{Title}</MovieName>
             <InfoMovie>
-                <MovieInfo>Year: 2012</MovieInfo>
-                <MovieInfo>Type: Movie</MovieInfo>
+                <MovieInfo>Year: {Year}</MovieInfo>
+                <MovieInfo>Type: {Type}</MovieInfo>
             </InfoMovie>
         </MovieDiv>
     )
