@@ -15,6 +15,9 @@ function App() {
     <Container >
       <SearchTile />
       <MovieContainer />
+      <MovieContainer />
+      <MovieContainer />
+      <MovieContainer />
     </Container>
   );
 }
