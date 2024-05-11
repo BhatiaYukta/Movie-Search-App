@@ -2,14 +2,7 @@ import React from "react"
 import styled from "styled-components"
 
 
-const MovieListContainer = styled.div`
-display:flex;
-flex-direction: row;
-flex-wrap:wrap;
-padding:30px;
-justify-content:space-evenly;
-gap:25px;
-`
+
 const MovieDiv = styled.div`
 display:flex;
 flex-direction:column;
@@ -39,7 +32,7 @@ flex-direction:row;
 justify-content:space-between;
 color:white;
 `
-const MovieInfo=styled.span`
+const MovieInfo = styled.span`
 font-size: 16px;
 font-weight: 500;
 color: white;
@@ -50,16 +43,15 @@ text-overflow: ellipsis;
 `
 const MovieContainer = (props) => {
     return (
-        <MovieListContainer>
-            <MovieDiv>
-                <CoverImage src="https://m.media-amazon.com/images/M/MV5BNjM0NTc0NzItM2FlYS00YzEwLWE0YmUtNTA2ZWIzODc2OTgxXkEyXkFqcGdeQXVyNTgwNzIyNzg@._V1_SX300.jpg"></CoverImage>
-                <MovieName>Guardians of the Galaxy Vol. 2</MovieName>
-                <InfoMovie>
-                    <MovieInfo>Year: 2012</MovieInfo>
-                    <MovieInfo>Type: Movie</MovieInfo>
-                </InfoMovie>
-            </MovieDiv>
-        </MovieListContainer>
+
+        <MovieDiv>
+            <CoverImage src="https://m.media-amazon.com/images/M/MV5BNjM0NTc0NzItM2FlYS00YzEwLWE0YmUtNTA2ZWIzODc2OTgxXkEyXkFqcGdeQXVyNTgwNzIyNzg@._V1_SX300.jpg"></CoverImage>
+            <MovieName>Guardians of the Galaxy Vol. 2</MovieName>
+            <InfoMovie>
+                <MovieInfo>Year: 2012</MovieInfo>
+                <MovieInfo>Type: Movie</MovieInfo>
+            </InfoMovie>
+        </MovieDiv>
     )
 }
 

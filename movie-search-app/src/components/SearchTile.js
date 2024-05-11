@@ -1,5 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components"
+import MovieContainer from "./MovieContainer";
+
+
+const API_KEY = "1d7d37bd"
+
+
+const Container = styled.div`
+display: flex,
+flex-direction:column;
+`;
 
 //For styling of header part in which we will add search bar
 const Header = styled.div`
@@ -49,21 +59,62 @@ border:none;
 outline:none;
 margin-left:15px;
 `
-
+const MovieListContainer = styled.div`
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+padding: 30px;
+gap: 25px;
+justify-content: space-evenly;;
+`
 
 const SearchTile = () => {
+    const [searchQuery, updateSearchQuery] = useState();
+    const [timeoutId, updateTimeoutID] = useState();
+    const [movieList, updateMovieList] = useState();
+
+    const fetchData = (searchString) => {
+        fetch("https://www.omdbapi.com/?s=" + searchString + "&apikey=" + API_KEY)
+            .then((res) => {
+                return res.json();
+            })
+            .then((data) => {
+                console.log(data);
+                updateMovieList(data.Search)
+            });
+
+    }
+
+    const onTextChange = (event) => {
+        clearTimeout(timeoutId)
+        updateSearchQuery(event.target.value)
+        const timeout = setTimeout(() => {
+            fetchData(event.target.value)
+        }, 500);
+        updateTimeoutID(timeout)
+    }
+
     return (
-        // <div>
+        <Container>
             <Header>
                 <AppName>
                     <MovieImage src="/MovieIcon.png"></MovieImage>
                     Movie Search App</AppName>
                 <SearchBox >
                     <SearchIcon src="/MovieSearch.png"></SearchIcon>
-                    <SearchInput placeholder="Search Movie"></SearchInput>
+                    <SearchInput placeholder="Search Movie" value={searchQuery} onChange={onTextChange}></SearchInput>
                 </SearchBox>
+
+
+
             </Header>
-        // </div>
+            <MovieListContainer>
+                {movieList?.length
+                    ? movieList.map(() => <MovieContainer />
+                    ) : <span style={{color:"white"}}>"No movie Search"</span>}
+
+            </MovieListContainer>
+        </Container>
     )
 }
 
