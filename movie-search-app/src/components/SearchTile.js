@@ -77,6 +77,13 @@ const Pagination = styled.div`
   margin-top: 20px;
 `;
 
+const Placeholder = styled.img`
+  width: 500;
+  height: 500;
+  margin: 150px;
+  opacity: 50%;
+`;
+
 const SearchTile = () => {
   const [searchQuery, updateSearchQuery] = useState("");
   const [timeoutId, updateTimeoutID] = useState();
@@ -146,7 +153,10 @@ const SearchTile = () => {
             />
           ))
         ) : (
-          <span style={{ color: "white" }}>No movie found</span>
+            <div>
+            {/* <Placeholder src="image copy.png" /> <br></br> */}
+          <span style={{ color: "white" }}>Searched Movie Not Found</span>
+        </div>
         )}
       </MovieListContainer>
       <Pagination>
